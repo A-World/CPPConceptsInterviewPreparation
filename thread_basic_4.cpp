@@ -1,3 +1,7 @@
+// Now i understood behaviour, the main thread completes its execution first, so it ends, 
+// when i ask main thread to sleep for some time, other thread performs it work, and I am able to view prints
+// asociated with other threads.
+
 // I am not currently able to understand the outout. I shall revisit this soon.
 
 // Aim : To study thread::detach funciton
@@ -50,7 +54,7 @@ int main()
 	//t2.join();
 	t1.detach();
 	t2.detach();
-	
+	std::this_thread::sleep_for(std::chrono:: seconds(2));
 }
 
 
