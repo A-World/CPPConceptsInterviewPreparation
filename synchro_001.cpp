@@ -7,14 +7,18 @@
 #include <vector>
 using namespace std;
 
+mutex mtx;
 
 struct Counter {
     int value;
 
     Counter() : value(0){}
 
-    void increment(){
+    void increment()
+	{
+		mtx.lock();
         ++value;
+		mtx.unlock();
     }
 };
 
@@ -41,18 +45,81 @@ int main(){
 
 
 /*
-Output with multiple runs
 
-ashish@ubuntu:~/projects/CPPThread$ rm a.out ;g++ synchro_001.cpp  -std=c++11 -pthread ; ./a.out
+
+************************* Output with multiple runs without synchronization ************************************
+
+ashish@ubuntu:~/projects/CPPThread$ ./a.out ;./a.out; ./a.out;./a.out;./a.out;./a.out;./a.out;./a.out;./a.out;./a.out;./a.out;./a.out;./a.out;./a.out;./a.out;./a.out;./a.out;./a.out;./a.out;./a.out;./a.out;./a.out;./a.out;./a.out;./a.out;./a.out;./a.out;./a.out;./a.out;./a.out;./a.out
+24981
+24831
+24856
 25000
-ashish@ubuntu:~/projects/CPPThread$ rm a.out ;g++ synchro_001.cpp  -std=c++11 -pthread ; ./a.out
+25000
+24896
+24943
+24930
 24872
-ashish@ubuntu:~/projects/CPPThread$ rm a.out ;g++ synchro_001.cpp  -std=c++11 -pthread ; ./a.out
-24912
-ashish@ubuntu:~/projects/CPPThread$ rm a.out ;g++ synchro_001.cpp  -std=c++11 -pthread ; ./a.out
-24900
-ashish@ubuntu:~/projects/CPPThread$ rm a.out ;g++ synchro_001.cpp  -std=c++11 -pthread ; ./a.out
-24833
+25000
+24919
+25000
+25000
+25000
+25000
+24971
+24894
+24952
+24892
+24946
+24800
+25000
+25000
+25000
+24942
+25000
+25000
+24113
+25000
+24828
+24913
 ashish@ubuntu:~/projects/CPPThread$
 
+
+
+*************** Output with   synchronization **************
+
+
+
+ashish@ubuntu:~/projects/CPPThread$ ./a.out ;./a.out; ./a.out;./a.out;./a.out;./a.out;./a.out;./a.out;./a.out;./a.out;./a.out;./a.out;./a.out;./a.out;./a.out;./a.out;./a.out;./a.out;./a.out;./a.out;./a.out;./a.out;./a.out;./a.out;./a.out;./a.out;./a.out;./a.out;./a.out;./a.out;./a.out
+25000
+25000
+25000
+25000
+25000
+25000
+25000
+25000
+25000
+25000
+25000
+25000
+25000
+25000
+25000
+25000
+25000
+25000
+25000
+25000
+25000
+25000
+25000
+25000
+25000
+25000
+25000
+25000
+25000
+25000
+25000
+ashish@ubuntu:~/projects/CPPThread$
 */
