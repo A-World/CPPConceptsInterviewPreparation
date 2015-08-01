@@ -1,10 +1,12 @@
 // Aim : To understand functionality of thread::join() and thread::joinable() functions.
 // What is difference between this two functions
 
-
-
-
 /*
+
+	thread::join 
+	- forces the current thread to wait for the other one 
+	- (in this case, the main thread has to wait for the thread t1 to finish)
+
 	thread::joinable()
 	- returns true or false value, 
 	- if thread is joinable, then returns true.
