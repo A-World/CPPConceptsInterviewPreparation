@@ -30,6 +30,7 @@ class Singleton
     private :
     static Singleton *m_pSingleton;
     Singleton() {}
+    ~Singleton() {}
 };
 
 Singleton *  Singleton::m_pSingleton = NULL;
