@@ -31,7 +31,18 @@ class time24
 			sec = s; min = m; hr = h;
 		}
 	public :
+		operator time12();
 };
+
+time12 :: operator time24()
+{
+	
+}
+
+time24 :: operator time12()
+{
+
+}
 
 int main()
 {
