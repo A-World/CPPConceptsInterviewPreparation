@@ -4,7 +4,7 @@ using namespace std;
 class base
 {
     public :
-        int i;
+        string i;
     void display()
     {
         cout << "base :: value of i is " << i<<endl;
@@ -26,7 +26,7 @@ int main()
     cout << "Hello World" <<endl;
     derived d;
     d.i = 10;
-    d.base::i = 20;
+    d.base::i = "20";
     d.display();
     d.base::display();
 }
