@@ -1,6 +1,15 @@
+/*
+	//TODO  please fix copilation error
+
+*/
+
+
 #include <iostream>
 using namespace std;
 
+
+// Forward declaration 
+class rectangle;
 class circle
 {
 	private :
@@ -10,6 +19,14 @@ class circle
 		{
 			radius = r;
 		}
+		
+		circle fun ()
+		{
+			rectangle r;
+			return circle(); 
+		}
+		
+		
 };
 
 class rectangle
