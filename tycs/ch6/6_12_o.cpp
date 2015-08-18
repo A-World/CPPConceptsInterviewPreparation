@@ -8,7 +8,7 @@
 using namespace std;
 
 
-// Forward declaration 
+//orward declaration 
 class rectangle;
 class circle
 {
@@ -20,13 +20,7 @@ class circle
 			radius = r;
 		}
 		
-		circle fun ()
-		{
-			rectangle r;
-			return circle(); 
-		}
-		
-		
+		circle operator = ( rectangle r);
 };
 
 class rectangle
@@ -46,6 +40,10 @@ class rectangle
 		}
 };
 
+circle circle::operator = ( rectangle r)
+{
+	return circle(); 
+}	
 
 int main()
 {
