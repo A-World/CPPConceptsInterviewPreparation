@@ -17,6 +17,9 @@ int main()
     v.push_back(22);
     v.push_back(44);
     v.push_back(11);
+    v.push_back(19);
+    v.push_back(100);
+    v.push_back(68);
     std::cout << v.size()<<std::endl;
 
     for (auto i = v.begin() ; i != v.end(); i++)
@@ -25,7 +28,7 @@ int main()
     }
     std::cout << "After sorting" <<std::endl;
     
-    sort (v.begin(),v.end());
+    sort (v.begin()+3,v.end());
     for (auto i = v.begin() ; i != v.end(); i++)
     {
         std::cout << *i<<std::endl;
