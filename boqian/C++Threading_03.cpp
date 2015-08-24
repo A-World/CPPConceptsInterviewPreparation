@@ -1,5 +1,5 @@
 /*
-    Thread Management : Exception handling, when child thread exists.
+    Thread Management : Associating thread with functor
 
     - Another approach, use a wrapper class, write the thread1.join inside destructor, 
       whenever thread object goes out of scope, it shall call destructor, and t.join() function. 
@@ -24,9 +24,38 @@ void function_1()
     cout << "Beauty is only skin-deep"<<endl;
 }
 
+class Fctor
+{
+    public :
+        void operator () () 
+        {
+            for(int i = 0 ; i > -100 ; i--)
+            {
+                cout << "from T1 "<<i<<endl;
+            }
+        }
+};
+
 int main()
 {
-    std::thread t1 (function_1);    
+//    Fctor fct;
+//    std::thread t1 (fct);
+    
+    /*  Following code does not compile, why??   */
+    //std::thread t1 (Fctor());
+    
+    std::thread t1 ((Fctor()));
+    /*
+        It has beecome declaration, 
+        - with return type as std:: thread,
+        - function name t1
+        - function t1 argument as   pointer to another function, which takes no paramters and returns a fctor.
+        
+        Solution is to add another pair of paranthesis.
+        std::thread t2 ((Fctor()));
+    */
+    
+    
     
     try
     {
