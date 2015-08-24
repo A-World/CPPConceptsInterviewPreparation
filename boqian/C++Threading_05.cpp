@@ -52,3 +52,57 @@ int main()
 
     return 0;
 } 
+
+
+/*
+        Following program runs perfectly fine with visual stdio 2012, but it flashes compilation error in g++ as follows 
+        
+        
+In file included from /usr/include/c++/4.9/thread:39:0,
+                 from C++Threading_05.cpp:22:
+/usr/include/c++/4.9/functional: In instantiation of ‘struct std::_Bind_simple<Fctor(std::basic_string<char>)>’:
+/usr/include/c++/4.9/thread:140:47:   required from ‘std::thread::thread(_Callable&&, _Args&& ...) [with _Callable = Fctor; _Args = {std::basic_string<char, std::char_traits<char>, std::allocator<char> >&}]’
+C++Threading_05.cpp:90:33:   required from here  // This line 	std::thread t1((Fctor()), s);
+/usr/include/c++/4.9/functional:1665:61: error: no type named ‘type’ in ‘class std::result_of<Fctor(std::basic_string<char>)>’
+       typedef typename result_of<_Callable(_Args...)>::type result_type;
+                                                             ^
+/usr/include/c++/4.9/functional:1695:9: error: no type named ‘type’ in ‘class std::result_of<Fctor(std::basic_string<char>)>’
+         _M_invoke(_Index_tuple<_Indices...>)        
+        
+
+#include <iostream>
+#include <string>
+#include <thread>
+using namespace std;
+
+class Fctor
+{
+public:
+	void operator () (string & msg)
+	{
+		cout << "T1 says " << msg << endl;
+		msg = "Trust is the mother of deceit";
+	}
+};
+int main()
+{
+	string s = "where there is no trust, there is no love";	
+	std::thread t1((Fctor()), s);
+	t1.join();
+	cout << "from main: " << s << endl;
+	return 0;
+}
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
