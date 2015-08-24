@@ -12,6 +12,9 @@
     
     - A paramter to thread is always pass by value.
     
+    - In following example, child thread and parent thread sharing same memeory, which is string s.
+    
+    
     Q 1. : if i write t1.join multiple times, what is behaviour
     
 */
