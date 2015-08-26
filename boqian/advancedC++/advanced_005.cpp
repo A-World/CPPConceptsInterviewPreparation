@@ -17,6 +17,8 @@ using namespace std;
     - In case, base class destructor is private, then destructor will not be generated.
 
     - default constructor is one that can work without any paramter.
+    
+    - To use class inside the STL, that class shall be copy assinable and copy constructable. 
 */
 
 
