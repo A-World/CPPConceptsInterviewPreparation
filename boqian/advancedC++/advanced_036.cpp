@@ -1,7 +1,7 @@
 /*
     Introduction to C++	:
     Video       :   Advanced C++ Maintain is-a Relation for Public Inheritance
-    Program  Part 3 : Public, protected and private inheritance - introduction
+    Program  Part 1 : Public, protected and private inheritance - introduction
 
     - public inheritance : IS A relationship.
     - A derived class should be able to do everything the base class can do.
