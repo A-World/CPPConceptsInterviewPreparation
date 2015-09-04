@@ -25,7 +25,7 @@ class yellowdog : public dog
 {
 public :
     virtual void bark() { cout << "yellowdog :: I am yellow dog "<<endl;   }
-    void isleep() { sleep(); }
+    void isleep() { sleep(); } 
     
 };
 
