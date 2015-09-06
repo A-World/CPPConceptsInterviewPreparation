@@ -20,7 +20,7 @@ class Dog
         ~Dog(){  bark(); }
 };
 
-class YellowDog : public Dog 
+class YellowDog : public Dog
 {
     public :
         YellowDog () { cout << "yellow Dog is born."<<endl; bark(); }
