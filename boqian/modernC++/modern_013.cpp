@@ -1,6 +1,6 @@
 /*
         C++ 11 Library- Shared Pointer - II.mp4
-        Program 1 : make_shared function, another example
+        Program 2 : make_shared function, default deleter, customized delete
 */
 #include <iostream>
 #include <string>
@@ -33,11 +33,16 @@ class Dog
 
 void foo()
 {
-    shared_ptr<Dog> p1 = make_shared<Dog>("Gunner");
-    shared_ptr<Dog> p2 = make_shared<Dog>("Tank");
-    p1 = p2 ; // Gunner is destroyed at this point.
-    p1.reset();
-    p1 = nullptr;
+    shared_ptr<Dog> p1 = make_shared<Dog>("Gunner");    // Using default deleter : operator delete.
+    shared_ptr<Dog> p2 = shared_ptr<Dog>(new Dog("Tank"),
+    [] (Dog*p) { cout <<"Customized deleting"<<endl; p->bark(); delete p;});       // constructor
+
+
+    // Custom delete is useful when u declare shared pointer to marray of objects, without custome delete, it will cause only one object to delete.
+
+    //shared_ptr<Dog> p3 (new Dog[3]); // dog[1] and dog[2] has memory leaks.
+    shared_ptr<Dog> p4 (new Dog[3],
+    [](Dog*p) { delete []p;});
 }
 
 int main()
