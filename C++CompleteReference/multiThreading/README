@@ -1,0 +1,14 @@
+This for tutorial for learning multi threaded application under c++
+I have used visual and non visual system from http://www.cs.mtu.edu/~shene/NSF-3/BETA/index.html
+
+I have also used program from http://www.cs.mtu.edu/~shene/NSF-3/e-Book/index.html
+I have modified the make file changed the structure for linux. 
+I was not able to build the program for windows based system.
+
+
+To build on ubuntu 14.04, you may require to download packages for gtk1.2 and install it.
+
+Note that, you won't be able to compile it unless you download libraries from above mention website and follow the instructions.
+
+
+

@@ -1,0 +1,75 @@
+Different funcitons used in process managements
+
+fork() : To create exactly same child process as parent.
+		Will child start from the point of creation or will it execute each and every thing?
+Ans : It seems that, it start execution from point fo creation. 
+	  Yes, it is correct, proof http://www.csl.mtu.edu/cs4411.ck/www/NOTES/process/fork/create.html
+	  New execution enviroment is created fro child process with copy of same input data as parent process.
+		Even command line paramters are also accessible to child process with spaate copy of it.
+
+wait() : This will block the process until one of its child process exits or a signla is recieved.
+		  wait() takes the address of an integer variable and returns the process ID of the completed process.
+		  
+		  wait <== child exit
+		  
+exit(0)	: exit the process executing the exit() funciton.
+
+execvp() : 2 arguments 
+			1. executable path/name to be executed by the process.
+			2. same as 2nd arguement of main(int argc, char ** argv ) function ,  	  
+			**** The 2nd argument must be terminated by a zero. *****
+			
+			The new executable will overwirte to callers address space.
+			
+Question : Have global varibles have separate copies in two process fork??			
+Ans :      Yes, For each process separate copy of global varibles is created.
+			ref prog fork5 2nd main.
+		
+
+
+Introduction to Shared memeory among two processes.	
+
+A general scheme of using shared memory is the following:
+
+For a server, it should be started before any client. The server should perform the following tasks:
+Ask for a shared memory with a memory key and memorize the returned shared memory ID. 
+
+This is performed by system call shmget().
+Attach this shared memory to the server's address space with system call shmat().
+Initialize the shared memory, if necessary.
+Do something and wait for all clients' completion.
+Detach the shared memory with system call shmdt().
+Remove the shared memory with system call shmctl().
+For the client part, the procedure is almost the same:
+Ask for a shared memory with the same memory key and memorize the returned shared memory ID.
+Attach this shared memory to the client's address space.
+Use the memory.
+Detach all shared memory segments, if necessary.
+Exit.
+
+important function are
+	shmget()     Ask for shared memory, with shared memory key
+	shmat()      Attach this shared memory to address space of process.
+	shmdt()		 Dettach this shared memory to address space of process.
+	shmctl()	 Remove shared memory.
+
+Keys in shared memory
+	- Unix requires a key of type key_t defined in file sys/types.h for requesting resources such as shared memory  
+ 	  segments, message queues and semaphores. 
+	
+	3 ways to use key
+	- a specific integer value (e.g., 123456)
+	- a key generated with function ftok()
+	- a uniquely generated key using IPC_PRIVATE (i.e., a private key).
+
+
+
+
+
+
+
+
+
+
+
+
